@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    container_name: rules-telegram-bot
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      RULES_PATH: /app/rules.json
+    volumes:
+      - ./rules.json:/app/rules.json
